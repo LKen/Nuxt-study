@@ -1,0 +1,89 @@
+/* 全局改变滚动条样式 */
+* {
+  @include scrollBar;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 散装样式
+-------------------------- */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+ul {
+  padding-inline-start: 0;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+:focus {
+  outline: none;
+}
+
+img {
+  border-style: none;
+}
+
+label {
+  font-weight: 700;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+/* 
+ * system-ui，使用各个支持平台上的默认系统字体
+ * -apple-system， 在一些稍低版本 Mac OS X 和 iOS 上，它针对旧版上的 Neue Helvetica 和 Lucida Grande 字体，升级使用更为合适的 San Francisco Fonts
+ * BlinkMacSystemFont，针对一些 Mac OS X 上的 Chrome 浏览器，使用系统默认字体
+ * segoe ui，在 Windows 及 Windows Phone 上选取系统默认字体
+ * Roboto，面向 Android 和一些新版的的 Chrome OS
+ * Helvetica,Arial，在针对不同操作系统不同平台设定采用默认系统字体后，针对一些低版本浏览器的降级方案
+ * sans-serif，兜底方案，保证字体风格统一，至少也得是无衬线字体
+ */
+ html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 13px;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family:
+    system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,
+    Helvetica,Arial,
+    sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 页面过度效果
+ ---------------------------- */
+ 
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+}

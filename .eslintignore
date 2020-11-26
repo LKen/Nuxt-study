@@ -1,0 +1,13 @@
+# 运行编译文件
+.nuxt
+
+# 项目模块
+node_modules
+
+# module 声明
+types
+
+# 静态文件
+static
+
+nuxt.config.js
