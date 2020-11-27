@@ -7,7 +7,15 @@
 <script lang="ts">
 import Vue from 'vue'
 
-export default Vue.extend({})
+export default Vue.extend({
+  name: 'DefaultLayout',
+
+  middleware(context) {
+    context.userAgent = process.server
+      ? context.req.headers['user-agent']
+      : navigator.userAgent
+  }
+})
 </script>
 
 <style>

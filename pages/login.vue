@@ -15,11 +15,14 @@
   </a-result>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'Login'
+  name: 'Login',
+  middleware() {
+    console.log('login')
+  }
 })
 </script>
 

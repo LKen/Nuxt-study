@@ -18,7 +18,13 @@
 <script lang="ts">
 import Vue from 'vue'
 
-export default Vue.extend({})
+export default Vue.extend({
+  name: 'Dashbord',
+
+  middleware({ userAgent }) {
+    console.log(`Dashbord： ${userAgent}`)
+  }
+})
 </script>
 
 <style>

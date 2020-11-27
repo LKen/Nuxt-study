@@ -1,7 +1,12 @@
 export default {
+  // Nuxt.js lets you create environment variables client side, also to be shared from server side. (https://zh.nuxtjs.org/docs/2.x/configuration-glossary/configuration-env/)
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  },
+  
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'app',
+    title: 'nuxt-study',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -20,6 +25,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    '~/plugins/api',
     '@/plugins/antd-ui'
   ],
 
@@ -30,6 +36,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    ['@nuxtjs/dotenv', { filename: '.env.prod' }]
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -60,11 +67,17 @@ export default {
 
   // Plugin: axios, setting
   axios: {
-    baseURL: 'http://localhost:3000/api' // 一定要写完整，不然默认 127.0.0.1：80
+    baseURL: process.env.BASE_URL // 一定要写完整，不然默认 127.0.0.1：80
   },
 
   // 配置 router 中间件，每次跳转路由都会经过中间件，可进行相应的权限判断
   router: {
     middleware: 'authenticated'
-  }
+  },
+
+  // server-side and client-side
+  publicRuntimeConfig: {},
+
+  // only server-side, overrides publicRuntimeConfig for server.
+  privateRuntimeConfig: {}
 }

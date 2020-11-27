@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "nuxt-study",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -28,6 +28,7 @@
   "devDependencies": {
     "@nuxt/types": "^2.14.6",
     "@nuxt/typescript-build": "^2.0.3",
+    "@nuxtjs/dotenv": "^1.4.1",
     "@typescript-eslint/eslint-plugin": "^4.8.1",
     "@typescript-eslint/parser": "^4.8.1",
     "@vue/test-utils": "^1.1.0",

@@ -50,13 +50,13 @@ export default Vue.extend({
   props: {
     robotlist: {
       type: Array,
-      default: () => null
+      default: () => []
     }
   },
-  async asyncData({ params, $axios }) {
+  async asyncData({ params, app: { $apis }}) {
     let detail = null
     try {
-      const { data } = await $axios.$get('/robot/searchRobotByDeviceId')
+      const { data } = await $apis.searchRobotByDeviceId()
       detail = data
     } catch (err) {
       console.log(err)
@@ -74,9 +74,9 @@ export default Vue.extend({
     }
   },
   async fetch() { // 不可以接受参数，否则就报错
-    const { $axios /* , $isServer */ } = this
+    const { $apis /* , $isServer */ } = this
     try {
-      const { data } = await $axios.$get('/robot/findRobotCustomFunction')
+      const { data } = await $apis.findRobotCustomFunction()
       this.params = data
     } catch (err) {
       throw new Error(err)
