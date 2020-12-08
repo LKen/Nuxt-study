@@ -17,7 +17,7 @@
     }
   },
   "lint-staged": {
-    "middleware/*.{ vue,js,jsx,ts,tsx,css,scss}": [
+    "*.{vue,js,jsx,ts,tsx}": [
       "eslint --fix",
       "git add"
     ]
