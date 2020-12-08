@@ -19,6 +19,10 @@
     "(assets|components|layouts|middleware|pages|plugins|store|utils)/**/*.{ vue,js,jsx,ts,tsx,css,scss}": [
       "eslint --fix",
       "git add"
+    ],
+    "(middleware|plugins|store|utils)/*.{ts,tsx}": [
+      "eslint --fix",
+      "git add"
     ]
   },
   "dependencies": {
