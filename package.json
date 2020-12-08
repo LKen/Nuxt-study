@@ -8,7 +8,8 @@
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
     "webpack": "nuxt-ts webpack > webpack.config.js --depth",
-    "test": "jest"
+    "test": "jest",
+    "eslint": "eslint --fix  --ext .ts,.tsc,.vue,.jsx middleware/ plugins/ layouts/ pages/ store/ utils/"
   },
   "husky": {
     "hooks": {
@@ -16,11 +17,7 @@
     }
   },
   "lint-staged": {
-    "(assets|components|layouts|middleware|pages|plugins|store|utils)/**/*.{ vue,js,jsx,ts,tsx,css,scss}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "(middleware|plugins|store|utils)/*.{ts,tsx}": [
+    "{assets,components,layouts,middleware,pages,plugins,store,utils}/**/*.{ vue,js,jsx,ts,tsx,css,scss}": [
       "eslint --fix",
       "git add"
     ]
