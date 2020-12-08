@@ -9,7 +9,7 @@
 // import { Context } from '@nuxt/types/app'
 
 export default function ({ store, redirect, route }) {
-  console.log(name12323)
+  console.log(name1232222)
 
   if (route.fullPath === '/') return
   if (route.fullPath.indexOf('/robot') > -1) return
