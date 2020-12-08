@@ -6,11 +6,9 @@
   }
 } */
 
-// import { Context } from '@nuxt/types/app'
+import { Context } from '@nuxt/types/app'
 
-export default function ({ store, redirect, route }) {
-  console.log(name1232222)
-
+export default function ({ store, redirect, route }: Context): Promise<void> | void {
   if (route.fullPath === '/') return
   if (route.fullPath.indexOf('/robot') > -1) return
   if (!store.state.authenticated) {
