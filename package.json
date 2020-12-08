@@ -16,7 +16,7 @@
     }
   },
   "lint-staged": {
-    "!(node_modules|.nuxt|static|test)/**/*.{ vue,js,jsx,ts,tsx,css,scss}": [
+    "(assets|components|layouts|middleware|pages|plugins|store|utils)/**/*.{ vue,js,jsx,ts,tsx,css,scss}": [
       "eslint --fix",
       "git add"
     ]
