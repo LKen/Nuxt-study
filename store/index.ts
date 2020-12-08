@@ -1,21 +1,26 @@
-/* eslint-disable */
+import { MutationTree, ActionTree } from 'vuex/types'
 
-export const state = () => ({
+interface IState {
+  name?: string
+  [key: string]: any
+}
+
+export const state = (): IState => ({
   robotlist: []
 })
 
-export const mutations = {
+export const mutations: MutationTree<IState> = {
   SET_ROBOTLIST(state, arr) {
     state.robotlist = arr
   }
 }
 
-export const actions = {
+export const actions: ActionTree<IState, any> = {
   /**
    * * Vuex action that is called only on server-side to pre-populate the store
    * First argument is the Vuex context, second argument is the Nuxt.js context
    * Dispatch other actions from here → only "entry point" for subsequent store actions on server-side
-   * @param {Object} context 
+   * @param {Object} context
    */
   async nuxtServerInit({ dispatch }) {
     await dispatch('fetchRobotlist')

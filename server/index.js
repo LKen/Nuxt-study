@@ -14,19 +14,21 @@ app.keys = ['gosunyun']
 const CONFIG = {
   key: 'koa:sess',
   maxAge: 86400000,
-  autoCommit: true, /** (boolean) automatically commit headers (default true) */
-  overwrite: true, /** (boolean) can overwrite or not (default true) */
-  httpOnly: true, /** 是否设置HttpOnly，如果在Cookie中设置了"HttpOnly"属性，那么通过程序(JS脚本、Applet等)将无法读取到Cookie信息，这样能有效的防止XSS攻击 */
-  rolling: true, /** 是否每次响应时刷新Session的有效期 */
-  renew: false, /** 是否在Session快过期时刷新Session的有效期 */
+  autoCommit: true /** (boolean) automatically commit headers (default true) */,
+  overwrite: true /** (boolean) can overwrite or not (default true) */,
+  httpOnly: true /** 是否设置HttpOnly，如果在Cookie中设置了"HttpOnly"属性，那么通过程序(JS脚本、Applet等)将无法读取到Cookie信息，这样能有效的防止XSS攻击 */,
+  rolling: true /** 是否每次响应时刷新Session的有效期 */,
+  renew: false /** 是否在Session快过期时刷新Session的有效期 */,
   signed: false
 }
 
 onerror(app)
 
-app.use(bodyparser({
-  enableTypes: ['json', 'form', 'text']
-}))
+app.use(
+  bodyparser({
+    enableTypes: ['json', 'form', 'text']
+  })
+)
 app.use(json())
 app.use(logger())
 app.use(require('koa-static')(path.join(__dirname, '../static')))

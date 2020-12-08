@@ -5,12 +5,8 @@
     sub-title="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
   >
     <template #extra>
-      <a-button key="console" type="primary">
-        Go Console
-      </a-button>
-      <a-button key="buy">
-        Buy Again
-      </a-button>
+      <a-button key="console" type="primary">Go Console</a-button>
+      <a-button key="buy">Buy Again</a-button>
     </template>
   </a-result>
 </template>
@@ -26,6 +22,4 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="less">
-
-</style>
+<style lang="less"></style>

@@ -8,11 +8,14 @@
       "ESNext.AsyncIterable",
       "DOM"
     ],
+    "noImplicitThis": false, // 当 this表达式的值为 any类型的时候，生成一个错误
+    "strictNullChecks": true,
     "esModuleInterop": true,
     "allowJs": true,
     "sourceMap": true,
     "strict": true,
     "noEmit": true,
+    "declaration": false,
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
@@ -21,10 +24,12 @@
       ],
       "@/*": [
         "./*"
+      ],
+      "*": [
+        "types/*"
       ]
     },
     "types": [
-      "vuex/types",
       "@types/node",
       "@nuxt/types",
       "@nuxtjs/axios"

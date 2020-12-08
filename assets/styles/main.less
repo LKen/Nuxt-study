@@ -1,6 +1,5 @@
 /* 全局改变滚动条样式 */
 * {
-  @include scrollBar;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -51,6 +50,7 @@ a:hover {
 div:focus {
   outline: none;
 }
+
 /* 
  * system-ui，使用各个支持平台上的默认系统字体
  * -apple-system， 在一些稍低版本 Mac OS X 和 iOS 上，它针对旧版上的 Neue Helvetica 和 Lucida Grande 字体，升级使用更为合适的 San Francisco Fonts
@@ -60,7 +60,8 @@ div:focus {
  * Helvetica,Arial，在针对不同操作系统不同平台设定采用默认系统字体后，针对一些低版本浏览器的降级方案
  * sans-serif，兜底方案，保证字体风格统一，至少也得是无衬线字体
  */
- html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -68,9 +69,9 @@ div:focus {
   overflow: hidden;
   box-sizing: border-box;
   font-family:
-    system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,
-    Helvetica,Arial,
-    sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+    system-ui, -apple-system, BlinkMacSystemFont, segoe ui, Roboto,
+    Helvetica, Arial,
+    sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -78,11 +79,12 @@ div:focus {
 
 /* 页面过度效果
  ---------------------------- */
- 
+
 .page-enter-active,
 .page-leave-active {
   transition: opacity 0.5s;
 }
+
 .page-enter,
 .page-leave-active {
   opacity: 0;

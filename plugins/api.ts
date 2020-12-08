@@ -1,35 +1,33 @@
-/* eslint-disable */
+import { Plugin } from '@nuxt/types'
+
+interface IAPI {
+  [apiname: string]: any
+}
 
 const robotModule = {
-  'list': {
-    'type': 'get',
-    'url': '/robot/list',
-    'summary': '',
-    'consumes': [
-      'application/json'
-    ]
+  list: {
+    type: 'get',
+    url: '/robot/list',
+    summary: '',
+    consumes: ['application/json']
   },
 
-  'searchRobotByDeviceId': {
-    'type': 'get',
-    'url': '/robot/searchRobotByDeviceId',
-    'summary': '',
-    'consumes': [
-      'application/json'
-    ]
+  searchRobotByDeviceId: {
+    type: 'get',
+    url: '/robot/searchRobotByDeviceId',
+    summary: '',
+    consumes: ['application/json']
   },
 
-  'findRobotCustomFunction': {
-    'type': 'get',
-    'url': '/robot/findRobotCustomFunction',
-    'summary': '',
-    'consumes': [
-      'application/json'
-    ]
+  findRobotCustomFunction: {
+    type: 'get',
+    url: '/robot/findRobotCustomFunction',
+    summary: '',
+    consumes: ['application/json']
   }
 }
 
-export default ({ $axios, redirect, env }, inject) => {
+const main: Plugin = ({ $axios, redirect, env }, inject) => {
   // $axios.setToken('admin:admin', 'Basic') // 虽然可以自定义 prefix，但并不会转化 btoa
   // 这种方式就会
   const service = $axios.create({
@@ -40,7 +38,7 @@ export default ({ $axios, redirect, env }, inject) => {
     headers: {
       common: {
         'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache',
+        Pragma: 'no-cache',
         'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7'
       }
     },
@@ -79,40 +77,41 @@ export default ({ $axios, redirect, env }, inject) => {
    * 配置：错误状态码
    */
   service.onError(error => {
-    const code = parseInt(error.response && error.response.status)
+    const code = error.response && error.response.status
     if (code === 400) {
       redirect('/400')
     }
 
-    if(code === 500) {
+    if (code === 500) {
       redirect('/sorry')
     }
 
     if (code === 200) {
       console.log('业务报错')
     }
-
   })
-  
-  const handler = ({ type, url, summary, consumes }) => {
+
+  const handler = ({ type, url }: { type: string; url: string }) => {
     if (type === 'get') {
-      return () => service.get(url, {
-        withCredentials: false,
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        }
-      })
-    } else {
-        return () => service.post(url, {
+      return () =>
+        service.$get(url, {
           withCredentials: false,
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json;charset=utf-8'
+          }
+        })
+    } else {
+      return () =>
+        service.$post(url, {
+          withCredentials: false,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
           }
         })
     }
   }
-  
-  const apis = {}
+
+  const apis: IAPI = {}
 
   Object.entries(robotModule).forEach(([key, api]) => {
     apis[key] = handler(api)
@@ -120,3 +119,5 @@ export default ({ $axios, redirect, env }, inject) => {
 
   inject('apis', apis)
 }
+
+export default main

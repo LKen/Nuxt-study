@@ -3,7 +3,7 @@ export default {
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000'
   },
-  
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'nuxt-study',
@@ -59,6 +59,10 @@ export default {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
+      }
+
+      if (isClient) {
+        config.optimization.splitChunks.maxSize = 200000
       }
     }
   },
