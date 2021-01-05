@@ -23,11 +23,21 @@ export default Vue.extend({
 
   middleware({ userAgent }) {
     console.log(`Dashbord： ${userAgent}`)
+  },
+
+  data() {
+    return {
+      wei: 123
+    }
+  },
+
+  mounted() {
+    console.log(this.wei)
   }
 })
 </script>
 
-<style>
+<style lang="less">
 .container {
   margin: 0 auto;
   min-height: 100vh;
@@ -43,7 +53,7 @@ export default Vue.extend({
   display: block;
   font-weight: 300;
   font-size: 100px;
-  color: #35495e;
+  color: @--theme-color;
   letter-spacing: 1px;
 }
 

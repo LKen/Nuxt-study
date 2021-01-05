@@ -9,7 +9,7 @@
     "generate": "nuxt-ts generate",
     "webpack": "nuxt-ts webpack > webpack.config.js --depth",
     "test": "jest",
-    "eslint": "eslint --fix --max-warnings=0 --ext .ts,.tsc,.vue,.jsx middleware/ plugins/ layouts/ pages/ store/ utils/"
+    "eslint": "eslint --fix --ext .ts,.tsc,.vue,.jsx middleware/ plugins/ layouts/ pages/ store/ utils/"
   },
   "husky": {
     "hooks": {
@@ -24,6 +24,7 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.0",
     "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/style-resources": "^1.0.0",
     "ant-design-vue": "^1.6.5",
     "core-js": "^3.6.5",
     "koa": "^2.13.0",

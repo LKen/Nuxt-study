@@ -1,21 +1,40 @@
 import { MutationTree, ActionTree } from 'vuex/types'
 
-interface IState {
-  name?: string
-  [key: string]: any
-}
+// interface IState {
+//   robotlist?: Array<any>
+//   [key: string]: any
+// }
 
-export const state = (): IState => ({
-  robotlist: []
+// type TParams = 'robotlist' | 'robotname'
+// type TState = Partial<Record<TParams, any>>
+
+// type Proxy<T> = {
+//   get(): T
+//   set(value: T): void
+// }
+// type Proxify<T> = {
+//   [P in keyof T]: Proxy<T[P]>
+// }
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const state = () => ({
+  robotlist: [],
+  ok: 123
 })
 
-export const mutations: MutationTree<IState> = {
+export type RootState = ReturnType<typeof state>
+
+// export const getters: GetterTree<RootState, RootState> = {
+//   name: state => state.name,
+// }
+
+export const mutations: MutationTree<RootState> = {
   SET_ROBOTLIST(state, arr) {
     state.robotlist = arr
   }
 }
 
-export const actions: ActionTree<IState, any> = {
+export const actions: ActionTree<RootState, RootState> = {
   /**
    * * Vuex action that is called only on server-side to pre-populate the store
    * First argument is the Vuex context, second argument is the Nuxt.js context

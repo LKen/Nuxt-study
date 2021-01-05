@@ -1,8 +1,8 @@
 module.exports = {
   root: true,
-  parser: 'vue-eslint-parser',
+  parser: 'vue-eslint-parser', // 检测 vue
   parserOptions: {
-    parser: '@typescript-eslint/parser',
+    parser: '@typescript-eslint/parser', // 检测 ts
     sourceType: 'module', // es6
     ecmaFeatures: {
       jsx: true
@@ -13,8 +13,7 @@ module.exports = {
     node: true,
     es6: true
   },
-  // '@typescript-eslint'
-  plugins: ['import'], // 定义了该eslint文件所依赖的插件
+  plugins: ['@typescript-eslint', 'import'], // 定义了该eslint文件所依赖的插件
 
   extends: [
     'plugin:promise/recommended',
@@ -22,11 +21,8 @@ module.exports = {
 
     'plugin:@typescript-eslint/recommended',
 
-    'prettier',
     // 覆盖
     'prettier/@typescript-eslint',
-    'prettier/babel',
-    'prettier/vue',
     // 推荐配置
     'plugin:prettier/recommended'
   ],
@@ -35,6 +31,12 @@ module.exports = {
   // it is base on https://github.com/vuejs/eslint-config-vue
   rules: {
     // 'prettier/prettier': 'error',
+    // '@typescript-eslint/explicit-module-boundary-types': [
+    //   'warn',
+    //   {
+    //     allowDirectConstAssertionInArrowFunctions: true
+    //   }
+    // ],
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/no-var-requires': 0,
     'vue/html-self-closing': [
